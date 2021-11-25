@@ -22,8 +22,8 @@ if (!empty($_POST)) {
     }
 
     $uploaddir = 'assets/cover/';
-    $uploadfile = $uploaddir . basename($safe['cover']);
-    move_uploaded_file($safe['cover'], $uploadfile);
+    $uploadfile = $uploaddir . basename($_FILES['cover']['name']);
+    move_uploaded_file($_FILES['cover']['tmp_name'], $uploadfile);
 
 
     if (strlen($safe['author']) < 2 || strlen($safe['author']) > 60) {
@@ -87,7 +87,7 @@ if (!empty($_POST)) {
         $query->bindValue(':param_promote', $is_promote);
         $query->bindValue(':publish_date', $safe['publish_date']);
         $query->bindValue(':id_param', $_GET['id'], PDO::PARAM_INT);
-        $query->bindValue(':param_cover', $safe['cover'], PDO::PARAM_STR);
+        $query->bindValue(':param_cover', $_FILES['cover']['name'], PDO::PARAM_STR);
         $query->bindValue(':param_author', $safe['author']);
         $query->execute(); // J'execute ma requete
 
@@ -144,7 +144,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                         }
                         ?>
 
-                        <form method="post" enctype=”multipart/form-data”>
+                        <form method="post" enctype="multipart/form-data">
 
                             <!-- titre -->
 
