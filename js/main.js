@@ -59,3 +59,9 @@ function pw_doublecheck() {
         passwordConfirm.removeClass('border-danger');
     }
 }
+
+function sort_mangas() {
+    var sort_method = $('#sort').val();
+    // TODO -> tri des mangas selon le choix utilisateur
+    
+}
