@@ -15,7 +15,7 @@ $query->execute();
 $mes_mangas = $query->fetchAll(PDO::FETCH_ASSOC); 
 
 // Importation des mangas aléatoirement
-$query2 = $conn->prepare('SELECT * FROM manga ORDER BY RAND() LIMIT 4');
+$query2 = $conn->prepare('SELECT * FROM manga WHERE promote = 1 ORDER BY RAND() LIMIT 4;');
 $query2->execute();
 
 $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
