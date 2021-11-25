@@ -89,8 +89,7 @@ if (!empty($_POST)) {
             $query->bindValue(':param_price', $safe['price']);
             $query->bindValue(':param_stock', $safe['stock'], PDO::PARAM_INT);
 
-            $query->execute(); // J'execute ma requete
-            echo 'La requête a été exécutée';
+            $query->execute(); // J'execute ma requete            
         } catch (PDOException $e) {
             echo $sql . '<br>' . $e->getMessage();
         }
