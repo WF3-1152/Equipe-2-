@@ -95,27 +95,28 @@ if (!empty($_POST)) {
                                 <h4><span class=" badge bg-danger"><?= $manga['price']; ?>€</span></h4>
                             </div>
                             <br>
-                            <?php
-                            if ($_SESSION['role'] == 'admin') {
-                            ?>
-                                <div class="d-flex justify-content-between">
-                                    <a href="update-product.php?id=<?= $manga['id']; ?>" class="btn btn-outline-primary" id="modifer">Modifier</a>
+                            <div class="truc d-flex justify-content-between">
+                                <?php
+                                if ($_SESSION['role'] == 'admin') {
+                                ?>
+                                    <div>
+                                        <a href="update-product.php?id=<?= $manga['id']; ?>" class="btn btn-outline-primary" id="modifer">Modifier</a>
+                                    </div>
+                                <?php } ?>
+                                <div>
+                                    <a href="product-list.php" class=" btn btn-outline-warning">Retour à la liste</a>
                                 </div>
-                            <?php } ?>
-                            <div class="d-flex justify-content-between">
-                                <a href="product-list.php" class=" btn btn-outline-warning">Retour à la liste</a>
                             </div>
 
-
                         </div>
 
-                        
+
                     </div>
                     <div class="opinion d-flex justify-content-center">
-                            <form method="post">
-                                <textarea name="opinion" id="opinion" cols="50" rows="10" placeholder="Écrivez votre commentaire" class="border border-success rounded m-3"></textarea>
-                            </form>
-                        </div>
+                        <form method="post">
+                            <textarea name="opinion" id="opinion" cols="50" rows="10" placeholder="Écrivez votre commentaire" class="border border-success rounded m-3"></textarea>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
