@@ -108,6 +108,10 @@ if (!empty($_POST)) {
                     <label for="password" class="form-label">Mot de passe</label>
                     <input type="password" class="form-control" name="i_password" id="password" placeholder="My Password">
                 </div>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Confirmer mot de passe</label>
+                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="My Password">
+                </div>
 
                 <div class="mt-5 d-flex justify-content-center">
                     <button type="submit" class="btn btn-success">S'inscrire</button>
