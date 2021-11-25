@@ -5,31 +5,36 @@
 
     <div class="justify-content-center container-fluid text-white">
         <!-- Links -->
-        <ul class="w-100 navbar-nav justify-content-center position-relative">            
+        <ul class="w-100 navbar-nav justify-content-center position-relative">
             <li class="nav-item">
                 <a class="nav-link myNav_items" href="product-list.php">Nos mangas à la vente</a>
             </li>
-            <li class="ms-5 nav-item">
-                <a class="nav-link myNav_items" href="add-product.php">Ajouter un produit</a>
-            </li>            
-            <li class="ms-5 nav-item">
-                <a class="nav-link myNav_items" href="delete-product.php">Supprimer un produit</a>
-            </li>
-            
-            <?php if (!isset($_SESSION['login'])) { ?>
-            <div class="me-3 position-absolute end-0">
-            <li class=" nav-item">
-                <a class="nav-link myNav_items" href="login.php">Se connecter</a>
-            </li>
-            </div>
-            <?php } if (isset($_SESSION['login'])) { ?>
-                <div class="me-3 position-absolute end-0">
-            <li class=" nav-item">
-                <a class="nav-link myNav_items" href="logout.php">Se déconnecter</a>
-            </li>
-            </div>
+            <?php
+            if ($_SESSION['role'] == 'admin') {
+            ?>
+                <li class="ms-5 nav-item">
+                    <a class="nav-link myNav_items" href="add-product.php">Ajouter un produit</a>
+                </li>
+                <li class="ms-5 nav-item">
+                    <a class="nav-link myNav_items" href="delete-product.php">Supprimer un produit</a>
+                </li>
             <?php } ?>
-            
+
+            <?php if (!isset($_SESSION['login'])) { ?>
+                <div class="me-3 position-absolute end-0">
+                    <li class=" nav-item">
+                        <a class="nav-link myNav_items" href="login.php">Se connecter</a>
+                    </li>
+                </div>
+            <?php }
+            if (isset($_SESSION['login'])) { ?>
+                <div class="me-3 position-absolute end-0">
+                    <li class=" nav-item">
+                        <a class="nav-link myNav_items" href="logout.php">Se déconnecter</a>
+                    </li>
+                </div>
+            <?php } ?>
+
         </ul>
     </div>
 
@@ -44,5 +49,4 @@
     a.myNav_items:hover {
         color: grey;
     }
-   
 </style>
