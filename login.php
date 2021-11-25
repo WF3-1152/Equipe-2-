@@ -15,6 +15,7 @@ function check_pw($pw)
 
     return ($majuscule && $minuscule && $chiffre);
 }
+// Il me semble qu'il faudrait modifier les vérification ici. Et vérifier si se qui est remplis dan le formulaire correspond juste a un utilisateur existant. car si tu te plante dans le non de l'utilisateur il n'y azucun message d'erreur qui s'affiche.(pense bête pour demain)
 
 if (!empty($_POST)) {
 

@@ -9,7 +9,7 @@ if (!isset($_SESSION['login'])) {
     die;
 }
 
-$sort_items = [
+$sort_items = [ // Pour l'instant rien ne se passe quand on fait un choix. il faudrais rajouter un onclic() (réflexion avant de partir au lit pour y penser demain)
     '1' => "stock",
     '2' => "publish_date",
     '3' => "price",
