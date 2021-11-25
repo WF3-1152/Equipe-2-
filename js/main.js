@@ -19,11 +19,9 @@ function validation(){
      if(!emailText.match(regexMail)){
          email.addClass('border-danger');
          email.removeClass('border-success');
-         console.log('KO');
      } else {
         email.addClass('border-success');
         email.removeClass('border-danger');
-        console.log('OK')
    }
  }
 
