@@ -41,7 +41,7 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
         <div class="mt-5 container justify-content-center">
             <form method="post">
 
-                <div class="d-flex">
+                <div class="d-flex container">
                     <select name="delete" class="form-select">
                         <option selected disabled>-- Choisir le titre -- </option>
                         <?php
@@ -58,6 +58,8 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
                     </select>
                     <button type="submit" class="ms-5 btn btn-danger">Supprimer</button>
                 </div>
+
+                
 
             </form>
         </div>

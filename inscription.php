@@ -29,7 +29,7 @@ if (!empty($_POST)) {
     if (!check_pw($safe['i_password'])) {
         $errors[] = "Le mot de passe doit contenir au minimum une majuscule, une minuscule et 1 chiffre.";
     }
-   
+
     if (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Adresse e-mail invalide";
     }
