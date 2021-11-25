@@ -14,7 +14,6 @@ function check_pw($pw)
     return ($majuscule && $minuscule && $chiffre);
 }
 
-
 if (!empty($_POST)) {
 
     $safe = array_map('trim', array_map('strip_tags', $_POST));
@@ -31,21 +30,9 @@ if (!empty($_POST)) {
         $errors[] = "Le mot de passe doit contenir au minimum une majuscule, une minuscule et 1 chiffre.";
     }
 
-
-    if ($safe['confirm_password'] != $safe['i_password']){
-        $errors[] = "Les deux mots de passe doivent être identique.";
-
+    if (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Adresse e-mail invalide";
     }
-
-    $email_check = ['@', '.fr', '.com'];
-
-    if (!str_contains($safe['i_email'], $email_check[0])) {
-        $errors[] = "Veuillez entrer un email valide";
-    } elseif (!str_contains($safe['i_email'], $email_check[1]) && !str_contains($safe['i_email'], $email_check[2])) {
-        $errors[] = "Votre adresse email doit finir par .com ou .fr";
-    } elseif (strlen($safe['i_email']) < 4 || strlen($safe['i_email']) > 40){
-        $errors[] = "Votre email doit contenir 4 à 40 caractères";
-    }    
 
     if (count($errors) === 0) {      
             
@@ -85,9 +72,7 @@ if (!empty($_POST)) {
     }
 }
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr" class="h-100">

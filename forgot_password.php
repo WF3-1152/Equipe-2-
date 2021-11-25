@@ -1,5 +1,35 @@
 <?php
 include_once 'inc/config.php';
+
+session_start();
+?>
+
+<?php
+
+
+$errors = [];
+
+if (!empty($_POST)) {
+
+    $safe = array_map('trim', array_map('strip_tags', $_POST));
+    if (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Adresse e-mail invalide";
+    }
+
+    if (count($errors) === 0) {
+        try {            
+            $sql = 'SELECT password FROM users WHERE email = :param_email;';
+            $query = $conn->prepare($sql);            
+            $query->bindValue(':param_email', $safe['email'], PDO::PARAM_STR);
+            $query->execute();
+            $results = $query->fetch(PDO::FETCH_ASSOC);            
+        } catch (PDOException $e) {
+            echo $sql.'<br>'.$e->getMessage();
+        }
+    } else {
+        var_dump($errors);
+    }
+}
 ?>
 
 
@@ -21,22 +51,25 @@ include_once 'inc/config.php';
         </div>
 
         <div class="container">
-            <form method="GET">
+            <form method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Votre e-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="votre.email@gmail.com">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="votre.email@gmail.com">
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button onclick="alert('Lien de réinitialisation envoyé par mail');" type="submit" class="btn btn-danger">Réinitialiser le mot de passe</button>
+                    <button type="submit" class="btn btn-danger">Réinitialiser le mot de passe</button>
                 </div>
             </form>
+        </div>   
+        <?php if(isset($_POST['email']) && $_POST['email'] != "") {?>
+        <div class="container d-flex jsutify-content-center">
+            <?='<span class="text-center">Votre mot de passe est : '.$results['password'].'</span>';?>
         </div>
-
-
+        <?php } ?>
     </main>
 
 </body>
-<?php include_once 'inc/footer.php';?>
+<?php include_once 'inc/footer.php'; ?>
 
 </html>
