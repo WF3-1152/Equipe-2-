@@ -9,12 +9,16 @@ if (!isset($_SESSION['login'])) {
     die;
 }
 
-
 $query = $conn->prepare('SELECT * FROM manga ORDER BY publish_date DESC');
 $query->execute(); 
 
 $mes_mangas = $query->fetchAll(PDO::FETCH_ASSOC); 
 
+// Importation des mangas aléatoirement
+$query2 = $conn->prepare('SELECT * FROM manga ORDER BY RAND() LIMIT 4');
+$query2->execute();
+
+$mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -64,6 +68,19 @@ $mes_mangas = $query->fetchAll(PDO::FETCH_ASSOC);
                     </div>
 				</div>
 			<?php endforeach;?>
+            <!--Afficher 4 mangas aléatoirement-->
+            <div class="card-group mt-5 mb-5 ml-2 mr-2">
+                <?php foreach($mes_mangas2 as $manga2):?>
+                    <div class="card">
+                        <img src="assets/cover/<?=$manga2['cover'];?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title"><?=$manga2['title'];?></h5>
+                        <p class="card-text"><?=$manga2['description'];?></p>
+                        <p class="card-text"><small class="text-muted"><?=$manga2['author'];?></small></p>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
 		</div>
 	</main>
 
