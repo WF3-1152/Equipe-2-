@@ -22,8 +22,8 @@ if (!empty($_POST)) {
     }
 
     $uploaddir = 'assets/cover/';
-    $uploadfile = $uploaddir . basename($_FILES['cover']['name']);
-    move_uploaded_file($_FILES['cover']['tmp_name'], $uploadfile);
+    $uploadfile = $uploaddir . basename($safe['cover']);
+    move_uploaded_file($safe['cover'], $uploadfile);
 
 
     if (strlen($safe['author']) < 2 || strlen($safe['author']) > 60) {
@@ -67,8 +67,15 @@ if (!empty($_POST)) {
         }
 
 
-        $sql = 'UPDATE manga SET title = :param_title, category = :param_category, description = :param_description, promote = :param_promote, publish_date = :publish_date, cover = :param_cover, author = :param_author
-        WHERE id = :id_param';
+        $sql = 'UPDATE manga SET 
+                title = :param_title, 
+                category = :param_category, 
+                description = :param_description, 
+                promote = :param_promote, 
+                publish_date = :publish_date, 
+                cover = :param_cover, 
+                author = :param_author
+                WHERE id = :id_param';
 
         // la variable $bdd se trouve dans le fichier config.php et est ma connexion à ma de données
         // $bdd->prepare() me permet de préparer ma requete SQL
@@ -80,7 +87,7 @@ if (!empty($_POST)) {
         $query->bindValue(':param_promote', $is_promote);
         $query->bindValue(':publish_date', $safe['publish_date']);
         $query->bindValue(':id_param', $_GET['id'], PDO::PARAM_INT);
-        $query->bindValue(':param_cover', $_FILES['cover']['name'], PDO::PARAM_STR);
+        $query->bindValue(':param_cover', $safe['cover'], PDO::PARAM_STR);
         $query->bindValue(':param_author', $safe['author']);
         $query->execute(); // J'execute ma requete
 
@@ -98,7 +105,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     $query->bindValue(':id_param', $_GET['id'], PDO::PARAM_INT);
     $query->execute();
 
-    $manga = $query->fetch(PDO::FETCH_ASSOC); // Je récupère une ligne de données
+    $manga = $query->fetch(PDO::FETCH_ASSOC); // Je récupère une ligne de données    
 }
 ?>
 
@@ -128,7 +135,6 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                     <div class="col-6">
                         <h1 class="text-center my-5">Editer ce manga</h1>
 
-
                         <?php
 
                         if (isset($formIsValid) && $formIsValid == true) {
@@ -137,7 +143,6 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                             echo '<div class="alert alert-danger">' . implode('<br>', $errors) . '</div>';
                         }
                         ?>
-
 
                         <form method="post" enctype=”multipart/form-data”>
 
@@ -153,7 +158,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                             
                             <div class="mb-3">
                                 <label for="cover" class="form-label">Couverture</label>
-                                <input type="file" id="cover" name="cover" class="form-control">
+                                <input type="file" id="cover" name="cover" class="form-control" value="<?= $manga['cover']; ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="author" class="form-label">Nom de l'auteur</label>

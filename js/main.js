@@ -2,12 +2,12 @@ $(document).ready(function() {
     var element = $('#background');
     var stock = $('#stock').text();
     stock = parseInt(stock);
-    if(stock < 6 && stock > 2){
-        element.addClass('bg-warning');
-    } else if(stock <= 2){
-        element.addClass('bg-danger');
-    } else {
+    if(stock >= 10){
         element.addClass('bg-success');
+    } else if(stock > 0 && stock < 10){
+        element.addClass('bg-warning');
+    } else {
+        element.addClass('bg-danger');
     }
 
 });
