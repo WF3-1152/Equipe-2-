@@ -52,7 +52,7 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 
     <main class="flex-shrink-0">
         <div class="container">
-            <div class="px-4 py-5 my-5 text-center heroes">
+            <div class="px-4 py-5 my-5 text-center border rounded heroes">
                 <h1 class="text-white display-5 fw-bold">Mangas Disponibles</h1>
             </div>
             <!--Afficher 4 mangas aléatoirement-->
@@ -100,7 +100,7 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div class="px-4 py-5 my-5 text-center banner"></div>
+            <div class="px-4 py-5 my-5 border rounded banner"></div>
         </div>
     </main>
 
