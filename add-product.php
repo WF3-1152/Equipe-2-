@@ -17,8 +17,8 @@ if (!empty($_POST)) {
     $safe = array_map('trim', array_map('strip_tags', $_POST));
 
 
-    if (strlen($safe['title']) < 25 || strlen($safe['title']) > 60) {
-        $errors[] = 'Votre titre doit compoter entre 25 et 60 caractères';
+    if (strlen($safe['title']) < 5 || strlen($safe['title']) > 60) {
+        $errors[] = 'Votre titre doit compoter entre 5 et 60 caractères';
     }
 
     if (strlen($safe['author']) < 5 || strlen($safe['author']) > 60) {
