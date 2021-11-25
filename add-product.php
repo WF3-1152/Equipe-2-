@@ -12,7 +12,7 @@ $errors = [];
 if (!empty($_POST)) {
 
 
-    
+
 
     $safe = array_map('trim', array_map('strip_tags', $_POST));
 
@@ -112,6 +112,8 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/add-product.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -130,9 +132,12 @@ if (!empty($_POST)) {
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6">
-                <h1 class="text-center my-5">Ajouter un nouvel article</h1>
-                <form method="post" enctype="multipart/form-data">
+            <div class="heroes border rounded my-5">
+                <h1 class="text-center text-white p-5">Ajouter un nouvel article</h1>
+            </div>
+            <div class="d-flex justify-content-around">
+
+                <form method="post" enctype="multipart/form-data" class="col-4">
 
                     <!-- titre -->
 
@@ -154,6 +159,9 @@ if (!empty($_POST)) {
                         <label for="description" class="form-label">Résumé</label>
                         <textarea class="form-control" id="description" rows="10" name="description"></textarea>
                     </div>
+                </form>
+
+                <form method="post" enctype="multipart/form-data" class="col-4">
 
                     <!-- date publication -->
 
@@ -174,7 +182,7 @@ if (!empty($_POST)) {
                             <label for="price" class="form-label">Prix</label>
                             <input type="text" class="form-control" id="price" name="price">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 align-self-center">
                             <input class="form-check-input" type="checkbox" value="" id="promote" name="promote" checked>
                             <label class="form-check-label" for="promote">Coup de coeur</label>
                         </div>
@@ -204,10 +212,9 @@ if (!empty($_POST)) {
                     <div class="mb-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary">Validez</button>
                     </div>
-
-
                 </form>
             </div>
+            <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
         </div>
     </div>
 

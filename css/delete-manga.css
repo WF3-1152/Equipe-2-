@@ -42,3 +42,20 @@ main .container .btn a {
     text-decoration: none;
     color: black;
 }
+
+/*css pour l'image de fond du h1 et de la banière en fond de page.*/
+
+.heroes {
+    background-image: url('https://www.wallpaperuse.com/wallp/2-29992_m.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner {
+    background-image: url('https://wallpaperaccess.com/full/21593.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}

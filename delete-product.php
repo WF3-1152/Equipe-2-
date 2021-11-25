@@ -29,7 +29,8 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manga Mise : Suppresion</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/delete-manga.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
@@ -37,9 +38,9 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
 
     <?php include 'inc/header.php'; ?>
 
-    <main class="flex-shrink-0">
-        <div class="mt-5 container">
-            <h1 class="text-center">Suppression d'un manga</h1>
+    <main class=" container flex-shrink-0">
+        <div class="container border rounded heroes my-5">
+            <h1 class="text-center text-white p-5">Suppression d'un manga</h1>
         </div>
         <div class="mt-5 container justify-content-center">
             <form method="post">
@@ -66,7 +67,7 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
 
             </form>
         </div>
-
+        <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
     </main>
 
 </body>
