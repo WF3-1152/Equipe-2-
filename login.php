@@ -96,7 +96,7 @@ if (!empty($_POST)) {
             <?php
         } elseif (isset($_SESSION['login'])) {
             echo '<div class="m-5 title text-center"> <br>';
-            echo '<h1> Bienvenue ' . $_SESSION['login'] . '</h1>';
+            header('Location: product-list.php');
         }
             ?>
             </div>

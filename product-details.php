@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require 'inc/config.php';
 
@@ -8,7 +8,6 @@ if (!isset($_SESSION['login'])) {
     header('Location: login.php');
     die;
 }
-
 
 if(isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])){
 
