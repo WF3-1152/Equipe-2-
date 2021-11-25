@@ -31,6 +31,12 @@ if (!empty($_POST)) {
         $errors[] = "Le mot de passe doit contenir au minimum une majuscule, une minuscule et 1 chiffre.";
     }
 
+
+    if ($safe['confirm_password'] != $safe['i_password']){
+        $errors[] = "Les deux mots de passe doivent être identique.";
+
+    }
+
     $email_check = ['@', '.fr', '.com'];
 
     if (!str_contains($safe['i_email'], $email_check[0])) {
@@ -116,6 +122,10 @@ if (!empty($_POST)) {
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
                     <input type="password" class="form-control" name="i_password" id="password" placeholder="My Password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Confirmer mot de passe</label>
+                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="My Password">
                 </div>
 
                 <div class="mt-5 d-flex justify-content-center">
