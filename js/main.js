@@ -9,7 +9,6 @@ $(document).ready(function() {
     } else {
         element.addClass('bg-danger');
     }
-
 });
 
 

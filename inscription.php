@@ -1,6 +1,7 @@
 <?php
 
 include 'inc/config.php';
+session_start();
 
 $errors = [];
 
