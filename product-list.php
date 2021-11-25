@@ -75,6 +75,7 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 					</div>
                     <div class="col-2">
                         <p><strong>Stock : </strong><?=$manga['stock'];?></p>
+                        <p><strong>Prix : </strong><?=$manga['price'];?>€</p>
                     </div>
                     <div class="col-2">
                         <a class="text-white btn btn-info" target="blank" href="product-details.php?id=<?=$manga['id'];?>">Voir plus</a>
