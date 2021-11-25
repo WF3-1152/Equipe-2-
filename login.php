@@ -43,6 +43,7 @@ if (!empty($_POST)) {
             foreach ($results as $value) {
                 if (($value['login'] == $safe['i_login']) && ($value['password'] == $safe['i_password'])) {                   
                     $_SESSION['login'] = $value['login'];
+                    $_SESSION['role'] = $value['role'];
                 }
             }
         } catch (PDOException $e) {
