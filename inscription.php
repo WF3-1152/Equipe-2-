@@ -23,7 +23,7 @@ if (!empty($_POST)) {
     }
 
     if (strlen($safe['i_password']) < 5 || strlen($safe['i_password']) > 25) {
-        $errors[] = "Votre mot de passe doit être compris entre 5 et 25 caractères";
+        $errors[] = "Votre mot de passe doit être compris entre 8 et 25 caractères";
     }
 
     if (!check_pw($safe['i_password'])) {
@@ -108,10 +108,10 @@ if (!empty($_POST)) {
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" name="i_password" id="password" placeholder="My Password">
+                    <input type="password" onchange="check_pw()" class="form-control" name="i_password" id="password" placeholder="My Password">
                 </div>
                 <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirmer mot de passe</label>
+                    <label for="confirm_password" onchange="" class="form-label">Confirmer mot de passe</label>
                     <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="My Password">
                 </div>
 

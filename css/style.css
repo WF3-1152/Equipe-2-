@@ -1,6 +1,0 @@
-input:valid {
-    border: green solid 1px;
-  } 
-  .verification[invalid='true'] {
-    border: red solid 3px;
-  }

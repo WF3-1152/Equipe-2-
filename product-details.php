@@ -85,32 +85,33 @@ if (!empty($_POST)) {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $manga['title']; ?></h5>
-                            <p class="card-text"><strong>Description : </strong><?= $manga['description']; ?></p>
+                            <h3 class="card-title"><?= $manga['title']; ?></h3>
                             <p class="card-text"><small class="text-muted">Auteur : <?= $manga['author']; ?></small></p>
-                            <br>
-                            <br>
-                            <div class="d-flex justify-content-between">
-                                <h4><span id="background" class=" badge">Stock : <span id="stock"><?= $manga['stock']; ?></span></span></h4>
+                            <p class="card-text"><strong>Description : </strong><?= $manga['description']; ?></p>
+                            <div class="d-flex">
+                                <h4><span id="background" class="me-4 badge">Stock : <span id="stock"><?= $manga['stock']; ?></span></span></h4>
                                 <h4><span class=" badge bg-danger"><?= $manga['price']; ?>€</span></h4>
                             </div>
-                            <br>
-                            <div class="truc d-flex justify-content-between">
+                            <div class="d-flex">
                                 <?php
                                 if ($_SESSION['role'] == 'admin') {
                                 ?>
-                                    <div>
-                                        <a href="update-product.php?id=<?= $manga['id']; ?>" class="btn btn-outline-primary" id="modifer">Modifier</a>
-                                    </div>
+
+                                    <a href="update-product.php?id=<?= $manga['id']; ?>" class="me-4 btn btn-primary" id="modifer">Modifier</a>
+
                                 <?php } ?>
-                                <div>
-                                    <a href="product-list.php" class=" btn btn-outline-warning">Retour à la liste</a>
-                                </div>
+
+                                <a href="product-list.php" class="btn btn-warning">Retour à la liste</a>
+
                             </div>
 
+                            <br>
+                            <br>
                         </div>
-
-
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-success">Ajouter au panier</button>
                     </div>
                     <div class="opinion d-flex justify-content-center">
                         <form method="post">
