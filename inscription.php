@@ -101,6 +101,7 @@ if (!empty($_POST)) {
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
                     <input type="email" class="form-control border" onchange="validation()" name="i_email" id="email" placeholder="myEmail@email.com">
+                    <div class="mt-1 ms-2" id="errorMessage_mail"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="login">Identifiant</label>
@@ -109,10 +110,12 @@ if (!empty($_POST)) {
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
                     <input type="password" onchange="check_pw()" class="form-control" name="i_password" id="password" placeholder="My Password">
+                    <div class="mt-1 ms-2" id="errorMessage_p"></div>
                 </div>
-                <div class="mb-3">
-                    <label for="confirm_password" onchange="" class="form-label">Confirmer mot de passe</label>
-                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="My Password">
+                <div class="mb-3">                    
+                    <label for="confirm_password" class="form-label">Confirmer mot de passe</label>
+                    <input type="password" onchange="pw_doublecheck()" class="form-control" name="confirm_password" id="confirm_password" placeholder="My Password">
+                    <div class="mt-1 ms-2" id="errorMessage_pc"></div>
                 </div>
 
                 <div class="mt-5 d-flex justify-content-center">
