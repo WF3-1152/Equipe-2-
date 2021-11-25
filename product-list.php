@@ -46,7 +46,20 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
         <div class="px-4 py-5 my-5 text-center heroes">
             <h1 class="text-white display-5 fw-bold">Mangas Disponibles</h1>
         </div>
-
+            <!--Afficher 4 mangas aléatoirement-->
+            <div class="card-group mt-5 mb-5 ml-2 mr-2">
+                <?php foreach($mes_mangas2 as $manga2):?>
+                    <div class="card">
+                        <img style="width:100%; padding:0 35px; height:500px;" src="assets/cover/<?=$manga2['cover'];?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title"><?=$manga2['title'];?></h5>
+                        <p class="card-text"><?=$manga2['description'];?></p>
+                        <p class="card-text"><small class="text-muted"><?=$manga2['author'];?></small></p>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
+            <!--Liste mangas-->
 			<?php foreach($mes_mangas as $manga):?>
 				<div class="grid row d-flex justify-content-between align-items-center pt-3 pb-3 border-bottom border-dark">
                     <div class="col-2">
@@ -68,19 +81,6 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
                     </div>
 				</div>
 			<?php endforeach;?>
-            <!--Afficher 4 mangas aléatoirement-->
-            <div class="card-group mt-5 mb-5 ml-2 mr-2">
-                <?php foreach($mes_mangas2 as $manga2):?>
-                    <div class="card">
-                        <img src="assets/cover/<?=$manga2['cover'];?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title"><?=$manga2['title'];?></h5>
-                        <p class="card-text"><?=$manga2['description'];?></p>
-                        <p class="card-text"><small class="text-muted"><?=$manga2['author'];?></small></p>
-                        </div>
-                    </div>
-                <?php endforeach;?>
-            </div>
 		</div>
 	</main>
 
