@@ -10,7 +10,7 @@
                 <a class="nav-link myNav_items" href="product-list.php">Nos mangas à la vente</a>
             </li>
             <?php
-            if ($_SESSION['role'] == 'admin') {
+            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
             ?>
                 <li class="ms-5 nav-item">
                     <a class="nav-link myNav_items" href="add-product.php">Ajouter un produit</a>
