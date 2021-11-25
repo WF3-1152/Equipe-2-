@@ -41,7 +41,7 @@ if (!empty($_POST)) {
             $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($results as $value) {
-                if (($value['login'] == $safe['i_login']) && ($value['password'] == $safe['i_password'])) {                   
+                if (($value['login'] == $safe['i_login']) && ($value['password'] == $safe['i_password'])) {
                     $_SESSION['login'] = $value['login'];
                     $_SESSION['role'] = $value['role'];
                 }
@@ -65,46 +65,49 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Manga Mise - LOGIN</title>
 </head>
 
 <body class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
     <main class="flex-shrink-0">
+        <div class="container">
+            <?php if (!isset($_SESSION['login'])) { ?>
+                <div class="my-5 title text-center heroes border rounded">
+                    <h1 class="text-white p-5">Se connecter</h1>
+                </div>
+                <div class="container">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Identifiant</label>
+                            <input type="text" class="form-control" id="login" name="i_login" placeholder="Mon Identifiant">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" name="i_password" id="password" placeholder="Mon Mot de Passe">
+                        </div>
+                        <button type="submit" class="me-3 btn btn-primary">Se connecter</button>
 
-        <?php if (!isset($_SESSION['login'])) { ?>
-            <div class="m-5 title text-center">
-                <h1>Se connecter</h1>
-            </div>
-            <div class="container">
-                <form method="POST">
-                    <div class="mb-3">
-                        <label for="login" class="form-label">Identifiant</label>
-                        <input type="text" class="form-control" id="login" name="i_login" placeholder="Mon Identifiant">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="i_password" id="password" placeholder="Mon Mot de Passe">
-                    </div>
-                    <button type="submit" class="me-3 btn btn-primary">Se connecter</button>
-                    
-                </form>
-                <button onclick="window.location.href='inscription.php';" class="mt-3 btn btn-secondary">S'inscrire</button>
-                <button onclick="window.location.href='forgot_password.php';" class="mt-3 btn btn-secondary">Mot de passe oublié</button>
-            </div>
+                    </form>
+                    <button onclick="window.location.href='inscription.php';" class="mt-3 btn btn-secondary">S'inscrire</button>
+                    <button onclick="window.location.href='forgot_password.php';" class="mt-3 btn btn-secondary">Mot de passe oublié</button>
+                </div>
 
-            <div class="container text-center">
-            <?php
-        } elseif (isset($_SESSION['login'])) {
-            echo '<div class="m-5 title text-center"> <br>';
-            header('Location: product-list.php');
-        }
-            ?>
-            </div>
-
+                <div class="container text-center">
+                <?php
+            } elseif (isset($_SESSION['login'])) {
+                echo '<div class="m-5 title text-center"> <br>';
+                header('Location: product-list.php');
+            }
+                ?>
+                </div>
+                <div class="px-4 py-5 my-5 text-center banner border rounded"></div>
+        </div>
     </main>
 
 </body>
-<?php include_once 'inc/footer.php';?>
+<?php include_once 'inc/footer.php'; ?>
 
 </html>
