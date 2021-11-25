@@ -20,6 +20,31 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
 
     $manga = $query->fetch();
 }
+
+
+
+if (!empty($_POST)) {
+
+
+    $errors = [];
+
+    $safe = array_map('trim', array_map('strip_tags', $_POST));
+
+    if (strlen($safe['opinion']) < 25) {
+        $errors[] = 'Votre commentaire doit comporter au moins 25 caractères';
+    }
+
+    $sql = 'INSERT INTO manga (opinion) VALUE (param:opinion)';
+
+    $query->bindValue(':param_opinion', $safe['opinion'], PDO::PARAM_STR);
+    $query->execute();
+
+    $formIsValid = true;
+} else {
+    $formIsValid = false;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +67,13 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
 
 <body class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
+
+    <?php
+    if (isset($isFormValid) && $isFormValid == true) {
+        echo '<div class="alert alert-success">Votre commentaire a bien été enregistré</div>';
+    } elseif (isset($isFormValid) && $isFormValid == false) {
+        echo '<div class="alert alert-danger">' . implode('<br>', $errors) . '</div>';
+    } ?>
 
     <main class="flex-shrink-0">
         <h1>Détails Manga</h1>
@@ -76,7 +108,14 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
 
 
                         </div>
+
+                        
                     </div>
+                    <div class="opinion d-flex justify-content-center">
+                            <form method="post">
+                                <textarea name="opinion" id="opinion" cols="50" rows="10" placeholder="Écrivez votre commentaire" class="border border-success rounded m-3"></textarea>
+                            </form>
+                        </div>
                 </div>
             </div>
         </div>
