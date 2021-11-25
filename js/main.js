@@ -12,3 +12,20 @@ $(document).ready(function() {
 });
 
 
+function validation(){
+    var email = $('#email');
+     var emailText = $('#email').val(); 
+    var regexMail= /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;    
+     if(!emailText.match(regexMail)){
+         email.addClass('border-danger');
+         email.removeClass('border-success');
+         console.log('KO');
+     } else {
+        email.addClass('border-success');
+        email.removeClass('border-danger');
+        console.log('OK')
+   }
+ }
+
+
+

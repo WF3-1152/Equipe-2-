@@ -96,6 +96,8 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Manga Mise - INSCRIPTION</title>
 </head>
 
@@ -113,7 +115,7 @@ if (!empty($_POST)) {
 
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" name="i_email" id="email" placeholder="myEmail@email.com">
+                    <input type="email" class="form-control border" onchange="validation()" name="i_email" id="email" placeholder="myEmail@email.com">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="login">Identifiant</label>
@@ -138,6 +140,8 @@ if (!empty($_POST)) {
 
     </main>
 
+
+    <script src="js/main.js"></script>
 </body>
 <?php include_once 'inc/footer.php';?>
 
