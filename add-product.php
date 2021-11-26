@@ -135,9 +135,9 @@ if (!empty($_POST)) {
             <div class="heroes border rounded my-5">
                 <h1 class="text-center text-white p-5">Ajouter un nouvel article</h1>
             </div>
-            <div class="d-flex justify-content-around">
 
-                <form method="post" enctype="multipart/form-data" class="col-4">
+            <form method="post" enctype="multipart/form-data" class="d-flex justify-content-around">
+                <div class="col-4">
 
                     <!-- titre -->
 
@@ -159,9 +159,9 @@ if (!empty($_POST)) {
                         <label for="description" class="form-label">Résumé</label>
                         <textarea class="form-control" id="description" rows="10" name="description"></textarea>
                     </div>
-                </form>
+                </div>
 
-                <form method="post" enctype="multipart/form-data" class="col-4">
+                <div class="col-4">
 
                     <!-- date publication -->
 
@@ -212,9 +212,13 @@ if (!empty($_POST)) {
                     <div class="mb-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary">Validez</button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
+
+            <!-- Bannière avant footer -->
+
             <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
+
         </div>
     </div>
 
