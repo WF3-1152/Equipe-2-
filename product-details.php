@@ -87,8 +87,10 @@ if (!empty($_POST)) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/product-details.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a714e14483.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -102,8 +104,16 @@ if (!empty($_POST)) {
         echo '<div class="alert alert-danger">' . implode('<br>', $errors) . '</div>';
     } ?>
 
+
+
+<div class="px-4 py-5 my-5 text-center border rounded heroes">
+                <h1 class="text-white display-5 fw-bold">Détails Manga</h1>
+            </div>
+
+
+
     <main class="flex-shrink-0">
-        <h1 class="heroes">Détails Manga</h1>
+        
         <div class="container">
             <div class="card mb-3" style="max-width: 740px;">
                 <div class="row g-0">
@@ -203,6 +213,9 @@ if (!empty($_POST)) {
             </div>
         </div>
     </main>
+
+    <div class="px-4 py-5 my-5 border rounded banner"></div>
+    
     <script src="js/main.js"></script>
 
     <!-- <script>
