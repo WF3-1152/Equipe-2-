@@ -64,6 +64,7 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
                             <h5 class="card-title"><?= $manga2['title']; ?></h5>
                             <p class="card-text"><small class="text-muted"><?= $manga2['publish_date']; ?></small></p>
                             <p class="card-text"><small class="text-muted"><?= $manga2['author']; ?></small></p>
+                            <a class="text-white btn btn-info" target="blank" href="product-details.php?id=<?= $manga2['id']; ?>">Voir plus</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
