@@ -76,7 +76,21 @@ try {
                                                                     $isFormValid = true;
                                                                 } catch (PDOException $e) {
                                                                     $isFormValid = false;
-                                                                } ?>;alert('Votre panier a bien été enregistré !');">Valider le panier</button>
+                                                                }
+                                                                
+                                                                    foreach ($panier as $product_name => $product_quantity) {
+                                                                        try {
+                                                                        $sql = 'UPDATE manga SET stock = stock-:param_quantity WHERE title = :param_name';
+                                                                        $query = $conn->prepare($sql);
+                                                                        $query->bindValue(':param_name', $product_name, PDO::PARAM_STR);
+                                                                        $query->bindValue(':param_quantity', $product_quantity, PDO::PARAM_INT);
+                                                                        $query->execute();
+                                                                        } catch (PDOException $e) {
+                                                                            $isFormValid = false;
+                                                                        }
+                                                                    }                                                            
+                                                                
+                                                                ?>;alert('Votre panier a bien été enregistré !');">Valider le panier</button>
 
                 <button onclick="<?php $_SESSION['cart'] = array(); ?>;window.location.href='product-list.php';" class="ms-2 btn btn-danger">Vider le panier</button>
             </div>
