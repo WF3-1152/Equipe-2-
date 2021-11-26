@@ -109,10 +109,7 @@ if (!empty($_POST)) {
                             <br>
                         </div>
                     </div>
-                    <br>
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-success">Ajouter au panier</button>
-                    </div>
+                    
 
                     <!-- Avis utilisateur -->
 
