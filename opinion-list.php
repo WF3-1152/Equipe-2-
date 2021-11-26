@@ -23,7 +23,7 @@ if (!isset($_SESSION['login'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="css/opinion-list.css">
 
     <title>Avis</title>
 </head>
@@ -33,14 +33,14 @@ if (!isset($_SESSION['login'])) {
     <?php include_once 'inc/header.php'; ?>
     <main class="flex-shrink-0">
 
+        <div class="px-4 py-5 my-5 text-center border rounded heroes">
+            <h1 class="text-white display-5 fw-bold">Avis</h1>
+        </div>
+
         <div class="container d-flex">
 
-            <div class="px-4 py-5 my-5 text-center border rounded heroes">
-                <h1 class="text-white display-5 fw-bold">Avis</h1>
-            </div>
-
             <?php foreach ($mes_mangas as $manga) : ?>
-                <div class="card" style="width: 18rem;">
+                <div class="card col-3" style="width: 18rem;">
                     <img src="assets/cover/<?= $manga['cover']; ?>" class="card-img-top" alt="couverture du manga">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $manga['title']; ?></h5>
@@ -49,8 +49,10 @@ if (!isset($_SESSION['login'])) {
                 </div>
             <?php endforeach; ?>
 
-            <div class="px-4 py-5 my-5 border rounded banner"></div>
+
         </div>
+
+        <div class="px-4 py-5 my-5 border rounded banner"></div>
 
     </main>
 
