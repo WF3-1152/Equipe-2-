@@ -54,6 +54,7 @@ if(!empty($_GET['trilist'])){
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/product-list.css">
@@ -77,6 +78,7 @@ if(!empty($_GET['trilist'])){
                             <h5 class="card-title"><?= $manga2['title']; ?></h5>
                             <p class="card-text"><small class="text-muted"><?= $manga2['publish_date']; ?></small></p>
                             <p class="card-text"><small class="text-muted"><?= $manga2['author']; ?></small></p>
+                            <a class="text-white btn btn-info" target="blank" href="product-details.php?id=<?= $manga2['id']; ?>">Voir plus</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

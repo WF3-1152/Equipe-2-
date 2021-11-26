@@ -30,18 +30,31 @@ if (!empty($_POST)) {
 
     $safe = array_map('trim', array_map('strip_tags', $_POST));
 
-    if (strlen($safe['opinion']) < 25 || strlen($safe['opinion']) > 100) {
+    if (strlen($safe['opinion']) < 25 || strlen($safe['opinion']) > 255) {
         $errors[] = 'Votre commentaire doit comporter au moins 25 caractères';
     }
 
-    $sql = 'INSERT INTO manga (opinion) VALUE (param:opinion)';
+    if ($safe['radio_mark'] != 1 && $safe['radio_mark'] != 2 && $safe['radio_mark'] != 3 && $safe['radio_mark'] != 4 && $safe['radio_mark'] != 5){
+        $errors[] = 'Note incorrecte';
+    }
 
-    $query->bindValue(':param_opinion', $safe['opinion'], PDO::PARAM_STR);
-    $query->execute();
+    if (count($errors) === 0) {
 
-    $formIsValid = true;
+        try {
+            $sql = 'INSERT INTO opinions (manga, opinion, user, mark) VALUES (:param_manga, :param_opinion, :param_user, :param_mark)';
+            $query = $conn->prepare($sql);
+            $query->bindValue(':param_mark', $safe['radio_mark'], PDO::PARAM_INT);
+            $query->bindValue(':param_opinion', $safe['opinion'], PDO::PARAM_STR);
+            $query->bindValue(':param_manga', $manga['title'], PDO::PARAM_STR);
+            $query->bindValue(':param_user', $_SESSION['login'], PDO::PARAM_STR);
+            $query->execute();
+            $formIsValid = true;
+        } catch (PDOException $e) {
+            echo $sql . '<br>' . $e->getMessage();
+            $formIsValid = false;
+        }
+    }
 } else {
-    $formIsValid = false;
 }
 
 
@@ -62,6 +75,7 @@ if (!empty($_POST)) {
 
     <link rel="stylesheet" href="css/product-details.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a714e14483.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -113,16 +127,50 @@ if (!empty($_POST)) {
 
                     <!-- Avis utilisateur -->
 
+                    <div class="mt-4 container">
+                        <?php
+                        if (isset($formIsValid) && $formIsValid == true) {
+                            echo '<div class="alert alert-success">Commentaire publié </div>';
+                        } elseif (isset($formIsValid) && $formIsValid == false) {
+                            echo '<div class="alert alert-danger">' . implode('<br>', $errors) . '</div>';
+                        } ?>
+
+                    </div>
+
                     <div class="opinion d-flex justify-content-center">
                         <form method="post">
                             <div class="opinion">
                                 <textarea name="opinion" id="opinion" cols="50" rows="10" placeholder="Écrivez votre commentaire" class="border border-success rounded m-3"></textarea>
                             </div>
+                            <div class="mt-2 mb-4 d-flex justify-content-center">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio1" value="1">
+                                    <label class="form-check-label" for="inlineRadio1">1 <i style="color:orange;"class="fas fa-star"></i></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio2" value="2">
+                                    <label class="form-check-label" for="inlineRadio2">2<i style="color:orange;"class="fas fa-star"></i></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio3" value="3">
+                                    <label class="form-check-label" for="inlineRadio3">3<i style="color:orange;"class="fas fa-star"></i></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio4" value="4">
+                                    <label class="form-check-label" for="inlineRadio4">4<i style="color:orange;"class="fas fa-star"></i></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio5" value="5">
+                                    <label class="form-check-label" for="inlineRadio5">5<i style="color:orange;"class="fas fa-star"></i></label>
+                                </div>
+                            </div>
                             <div class="mb-3 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary">Validez</button>
+                                <button type="submit" class="btn btn-primary">Publier le commentaire</button>
                             </div>
                         </form>
                     </div>
+
+
                 </div>
             </div>
         </div>
