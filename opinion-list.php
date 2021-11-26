@@ -48,7 +48,7 @@ try {
 <body>
 
     <?php include_once 'inc/header.php'; ?>
-    <main class="flex-shrink-0">
+    <main class="container flex-shrink-0">
 
         <div class="px-4 py-5 my-5 text-center border rounded heroes">
             <h1 class="text-white display-5 fw-bold">Avis</h1>
