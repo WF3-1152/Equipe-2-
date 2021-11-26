@@ -40,16 +40,24 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
     <title>Manga Mise - Mot de passe oublié</title>
 </head>
 
 <body class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
+
+    <div class="px-4 py-5 my-5 text-center border rounded heroes">
+                <h1 class="text-white display-5 fw-bold">Mot de passe oublié</h1>
+            </div>
+
     <main class="flex-shrink-0">
         <div class="mt-5 container text-center">
-            <h1>Mot de passe oublié</h1>
+            
         </div>
 
+
+        
         <div class="container">
             <form method="POST">
                 <div class="mb-3">
@@ -68,7 +76,7 @@ if (!empty($_POST)) {
         </div>
         <?php } ?>
     </main>
-
+    <div class="px-4 py-5 my-5 border rounded banner"></div>
 </body>
 <?php include_once 'inc/footer.php'; ?>
 

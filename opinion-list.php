@@ -48,11 +48,13 @@ try {
 <body>
 
     <?php include_once 'inc/header.php'; ?>
-    <main class="container flex-shrink-0">
-
-        <div class="px-4 py-5 my-5 text-center border rounded heroes">
+    <div class="px-4 py-5 my-5 text-center border rounded heroes">
             <h1 class="text-white display-5 fw-bold">Avis</h1>
         </div>
+
+    <main class="container flex-shrink-0">
+
+        
 
         <div class="container d-flex flex-wrap justify-content-evenly">
 
@@ -76,9 +78,11 @@ try {
 
         </div>        
 
-        <div class="px-4 py-5 my-5 border rounded banner"></div>
+        
 
     </main>
+
+    <div class="px-4 py-5 my-5 border rounded banner"></div>
 
     <?php include_once 'inc/footer.php'; ?>
 

@@ -130,11 +130,14 @@ if (!empty($_POST)) {
         } ?>
 
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="heroes border rounded my-5">
+
+    <div class="heroes border rounded my-5">
                 <h1 class="text-center text-white p-5">Ajouter un nouvel article</h1>
             </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            
 
             <form method="post" enctype="multipart/form-data" class="d-flex justify-content-around">
                 <div class="col-4">
@@ -217,10 +220,11 @@ if (!empty($_POST)) {
 
             <!-- Bannière avant footer -->
 
-            <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
+            
 
         </div>
     </div>
+    <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
 
     <?php include_once 'inc/footer.php'; ?>
 

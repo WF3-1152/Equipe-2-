@@ -84,3 +84,18 @@ main .container .details .btn a #edit:hover {
 main .container .details .btn a #delete:hover {
     background-color:red;
 }
+
+.heroes {
+    background-image: url('https://www.wallpaperuse.com/wallp/2-29992_m.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner {
+    background-image: url('https://wallpaperaccess.com/full/21593.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}

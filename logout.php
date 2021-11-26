@@ -16,6 +16,11 @@ session_start();
 
 <body class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
+
+    <div class="px-4 py-5 my-5 text-center border rounded heroes">
+                <h1 class="text-white display-5 fw-bold">Se déconnecter</h1>
+            </div>
+
     <main class="flex-shrink-0">
 
     <?php
@@ -37,6 +42,8 @@ session_start();
 
 
     </main>
+
+    <div class="px-4 py-5 my-5 border rounded banner"></div>
 
 </body>
 <?php include_once 'inc/footer.php';?>

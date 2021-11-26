@@ -73,12 +73,15 @@ if (!empty($_POST)) {
 
 <body class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
+
+    <div class="my-5 title text-center heroes border rounded ">
+                    <h1 class="text-white p-5 fw-bold">Se connecter</h1>
+                </div>
+
     <main class="flex-shrink-0">
         <div class="container">
             <?php if (!isset($_SESSION['login'])) { ?>
-                <div class="my-5 title text-center heroes border rounded">
-                    <h1 class="text-white p-5">Se connecter</h1>
-                </div>
+                
                 <div class="container">
                     <form method="POST">
                         <div class="mb-3">
@@ -104,9 +107,11 @@ if (!empty($_POST)) {
             }
                 ?>
                 </div>
-                <div class="px-4 py-5 my-5 text-center banner border rounded"></div>
+                
         </div>
     </main>
+
+    <div class="px-4 py-5 my-5 text-center banner border rounded"></div>
 
 </body>
 <?php include_once 'inc/footer.php'; ?>

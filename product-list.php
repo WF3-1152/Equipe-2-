@@ -51,11 +51,13 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 <body class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
 
-    <main class="flex-shrink-0">
-        <div class="container">
-            <div class="px-4 py-5 my-5 text-center border rounded heroes">
+    <div class="px-4 py-5 my-5 text-center border rounded heroes">
                 <h1 class="text-white display-5 fw-bold">Mangas Disponibles</h1>
             </div>
+
+    <main class="flex-shrink-0 container">
+        <div>
+            
             <!--Afficher 4 mangas aléatoirement-->
             <div class="card-group mt-5 mb-5 ml-2 mr-2">
                 <?php foreach ($mes_mangas2 as $manga2) : ?>
@@ -102,10 +104,10 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div class="px-4 py-5 my-5 border rounded banner"></div>
+            
         </div>
     </main>
-
+    <div class="px-4 py-5 my-5 border rounded banner"></div>
 </body>
 <?php include_once 'inc/footer.php'; ?>
 

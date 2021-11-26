@@ -83,16 +83,19 @@ if (!empty($_POST)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/login.css">
     <title>Manga Mise - INSCRIPTION</title>
 </head>
 
 <body  class="d-flex flex-column h-100">
     <?php include_once 'inc/header.php'; ?>
 
-    <div class="m-5 title text-center">
-        <h1>S'inscrire</h1>
-    </div>
+    <div class="px-4 py-5 my-5 text-center border rounded heroes">
+                <h1 class="text-white display-5 fw-bold">S'inscrire</h1>
+            </div>
 
+
+    
     <main class="flex-shrink-0">
 
         <div class="container">
@@ -128,7 +131,7 @@ if (!empty($_POST)) {
 
     </main>
 
-
+    <div class="px-4 py-5 my-5 border rounded banner"></div>
     <script src="js/main.js"></script>
 </body>
 <?php include_once 'inc/footer.php';?>
