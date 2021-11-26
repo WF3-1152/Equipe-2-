@@ -9,6 +9,9 @@
             <li class="nav-item">
                 <a class="nav-link myNav_items" href="product-list.php">Nos mangas à la vente</a>
             </li>
+            <li class="ms-5 nav-item">
+                <a class="nav-link myNav_items" href="opinion-list.php">Les avis</a>
+            </li>
             <?php
             if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
             ?>

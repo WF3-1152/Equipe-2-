@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 
     $safe = array_map('trim', array_map('strip_tags', $_POST));
 
-    if (strlen($safe['opinion']) < 25) {
+    if (strlen($safe['opinion']) < 25 || strlen($safe['opinion']) > 100) {
         $errors[] = 'Votre commentaire doit comporter au moins 25 caractères';
     }
 
@@ -113,9 +113,17 @@ if (!empty($_POST)) {
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-success">Ajouter au panier</button>
                     </div>
+
+                    <!-- Avis utilisateur -->
+
                     <div class="opinion d-flex justify-content-center">
                         <form method="post">
-                            <textarea name="opinion" id="opinion" cols="50" rows="10" placeholder="Écrivez votre commentaire" class="border border-success rounded m-3"></textarea>
+                            <div class="opinion">
+                                <textarea name="opinion" id="opinion" cols="50" rows="10" placeholder="Écrivez votre commentaire" class="border border-success rounded m-3"></textarea>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary">Validez</button>
+                            </div>
                         </form>
                     </div>
                 </div>
