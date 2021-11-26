@@ -38,12 +38,10 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
 
     <?php include 'inc/header.php'; ?>
 
-    <div class="border rounded heroes my-5">
-            <h1 class="text-center text-white p-5 fw-bold">Suppression d'un manga</h1>
+    <main class="container flex-shrink-0">
+        <div class="container border rounded heroes my-5">
+            <h1 class="text-center text-white p-5">Suppression d'un manga</h1>
         </div>
-
-    <main class=" container flex-shrink-0">
-        
         <div class="mt-5 container justify-content-center">
             <form method="post">
 
@@ -69,9 +67,8 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
 
             </form>
         </div>
-        
+        <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
     </main>
-    <div class="px-4 py-5 my-5 border rounded text-center banner"></div>
 
 </body>
 <?php include_once 'inc/footer.php';?>

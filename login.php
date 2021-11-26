@@ -45,6 +45,7 @@ if (!empty($_POST)) {
                 if (($value['login'] == $safe['i_login']) && ($value['password'] == $safe['i_password'])) {
                     $_SESSION['login'] = $value['login'];
                     $_SESSION['role'] = $value['role'];
+                    $_SESSION['cart'] = array();
                 }
             }
         } catch (PDOException $e) {
