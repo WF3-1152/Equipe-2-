@@ -9,14 +9,8 @@ if (!isset($_SESSION['login'])) {
     die;
 }
 
-$sort_items = [ // Pour l'instant rien ne se passe quand on fait un choix. il faudrais rajouter un onclic() (réflexion avant de partir au lit pour y penser demain)
-    '1' => "stock",
-    '2' => "publish_date",
-    '3' => "price",
-    '4' => "title",
-];
 
-$query = $conn->prepare('SELECT * FROM manga ORDER BY stock DESC');
+$query = $conn->prepare('SELECT * FROM manga');
 $query->execute();
 
 $mes_mangas = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -26,6 +20,25 @@ $query2 = $conn->prepare('SELECT * FROM manga WHERE promote = 1 ORDER BY RAND() 
 $query2->execute();
 
 $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
+
+if(!empty($_GET['trilist'])){ 
+    if(isset($_GET['trilist']) && $_GET['trilist'] == 'prix'){
+        $query = $conn->prepare('SELECT * FROM manga ORDER BY price DESC');
+        $query->execute();
+    }
+
+    if(isset($_GET['trilist']) && $_GET['trilist'] == 'date'){
+        $query = $conn->prepare('SELECT * FROM manga ORDER BY publish_date DESC');
+        $query->execute();
+    }
+
+    if(isset($_GET['trilist']) && $_GET['trilist'] == 'stock'){
+        $query = $conn->prepare('SELECT * FROM manga ORDER BY stock DESC');
+        $query->execute();
+    }
+
+    $mes_mangas = $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
 ?>
 
@@ -71,14 +84,17 @@ $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </div>
             <!--Liste mangas-->
+            
             <div style="width : 150px !important; margin-right : 0px;" class="mb-4 container">
-                <label for="sort">Trier :</label>
-                <select name="sort" id="sort" class="form-select" aria-label="Default select example">
-                    <option value="1" selected>Par stock</option>
-                    <option value="2">Par date</option>
-                    <option value="3">Par prix</option>
-                    <option value="4">Par titre</option>
-                </select>
+                <form method="get">
+                    <select name="trilist" id="trilist">
+                        <option value="0" selected disabled>--Tirer--</option>
+                        <option name="prix" value="prix">Prix</option>
+                        <option name="stock" value="stock">Stock</option>
+                        <option name="date" value="date">Date</option>
+                    </select>
+                    <input type="submit">
+                </form>
             </div>
             <?php foreach ($mes_mangas as $manga) : ?>
                 <div class="grid row d-flex justify-content-between align-items-center pt-3 pb-3 border-bottom border-dark">
