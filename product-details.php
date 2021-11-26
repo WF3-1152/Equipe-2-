@@ -23,8 +23,8 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
 if (isset($_GET['quantity'])) {
     $errors = [];
 
-    $safe = array_map('trim', array_map('strip_tags', $_GET));    
-    
+    $safe = array_map('trim', array_map('strip_tags', $_GET));
+
     if ($safe['quantity'] < 0 || $safe['quantity'] > $manga['stock']) {
         $errors[] = 'Veuillez sélectionner une quantité valide.';
     }
@@ -32,7 +32,6 @@ if (isset($_GET['quantity'])) {
     if (count($errors) === 0) {
         // key => valeur        
         $_SESSION['cart'][$manga['title']] = $safe['quantity'];
-        
     }
 }
 
@@ -106,14 +105,14 @@ if (!empty($_POST)) {
 
 
 
-<div class="px-4 py-5 my-5 text-center border rounded heroes">
-                <h1 class="text-white display-5 fw-bold">Détails Manga</h1>
-            </div>
+    <div class="px-4 py-5 my-5 text-center border rounded heroes">
+        <h1 class="text-white display-5 fw-bold">Détails Manga</h1>
+    </div>
 
 
 
     <main class="flex-shrink-0">
-        
+
         <div class="container">
             <div class="card mb-3" style="max-width: 740px;">
                 <div class="row g-0">
@@ -144,18 +143,18 @@ if (!empty($_POST)) {
                             </div>
                             <div>
                                 <form method="GET">
-                                    <input type="hidden" name="id" value=<?=$_GET['id']?>>
+                                    <input type="hidden" name="id" value=<?= $_GET['id'] ?>>
                                     <select class="mt-4 form-select" name="quantity">
                                         <option selected disabled>-- Quantité -- </option>
                                         <?php for ($i = 1; $i <= $manga['stock']; $i++) { // liste de 0 à stock
                                             echo '<option value="' . $i . '">' . $i . '</option>';
-                                        }?>
+                                        } ?>
                                     </select>
                                     <button type="submit" class="my-4 btn btn-success">Ajouter au panier</button>
                                 </form>
 
                             </div>
-                            
+
 
                             <br>
                             <br>
@@ -215,7 +214,7 @@ if (!empty($_POST)) {
     </main>
 
     <div class="px-4 py-5 my-5 border rounded banner"></div>
-    
+
     <script src="js/main.js"></script>
 
     <!-- <script>

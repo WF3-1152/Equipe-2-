@@ -49,12 +49,12 @@ try {
 
     <?php include_once 'inc/header.php'; ?>
     <div class="px-4 py-5 my-5 text-center border rounded heroes">
-            <h1 class="text-white display-5 fw-bold">Avis</h1>
-        </div>
+        <h1 class="text-white display-5 fw-bold">Avis</h1>
+    </div>
 
     <main class="container flex-shrink-0">
 
-        
+
 
         <div class="container d-flex flex-wrap justify-content-evenly">
 
@@ -70,15 +70,15 @@ try {
                         <h5 class="card-title"><?php echo $opinion['manga']; ?></h5>
                         <p class="card-text"><?php echo $opinion['opinion']; ?></p>
                         <p class="text-secondary">Commentaire écrit par : <?php echo $opinion['user']; ?></p>
-                        <span>Note attribuée : <?=$opinion['mark'];?>/5<i style="color:orange;" class="fas fa-star"></i></span>
+                        <span>Note attribuée : <?= $opinion['mark']; ?>/5<i style="color:orange;" class="fas fa-star"></i></span>
                     </div>
                 </div>
             <?php endforeach; ?>
 
 
-        </div>        
+        </div>
 
-        
+
 
     </main>
 

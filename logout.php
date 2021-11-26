@@ -18,14 +18,14 @@ session_start();
     <?php include_once 'inc/header.php'; ?>
 
     <div class="px-4 py-5 my-5 text-center border rounded heroes">
-                <h1 class="text-white display-5 fw-bold">Se déconnecter</h1>
-            </div>
+        <h1 class="text-white display-5 fw-bold">Se déconnecter</h1>
+    </div>
 
     <main class="flex-shrink-0">
 
-    <?php
+        <?php
         var_dump($_SESSION);
-    ?>
+        ?>
         <div class="container text-center">
             <?php if (!isset($_SESSION['login'])) {
                 echo 'Vous n\'étiez pas connecté';
@@ -46,5 +46,6 @@ session_start();
     <div class="px-4 py-5 my-5 border rounded banner"></div>
 
 </body>
-<?php include_once 'inc/footer.php';?>
+<?php include_once 'inc/footer.php'; ?>
+
 </html>

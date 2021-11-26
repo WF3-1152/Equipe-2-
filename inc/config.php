@@ -5,13 +5,14 @@
 // PHP 7
 
 if (!function_exists('str_contains')) {
-    function str_contains($haystack, $needle) {
-        return $needle !== '' && mb_strpos($haystack, $needle) !== false;
-    }
+	function str_contains($haystack, $needle)
+	{
+		return $needle !== '' && mb_strpos($haystack, $needle) !== false;
+	}
 }
 
 // Catégorie de mes articles
-$categories= [
+$categories = [
 	'shonen'    => 'Shōnen',
 	'Shojo' 	=> 'Shōjo',
 	'Seinen'	=> 'Seinen',

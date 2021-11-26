@@ -11,7 +11,7 @@
             </li>
             <li class="ms-5 nav-item">
                 <a class="nav-link myNav_items" href="opinion-list.php">Les avis</a>
-            </li>            
+            </li>
             <?php
             if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
             ?>

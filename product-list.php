@@ -21,18 +21,18 @@ $query2->execute();
 
 $mes_mangas2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 
-if(!empty($_GET['trilist'])){ 
-    if(isset($_GET['trilist']) && $_GET['trilist'] == 'prix'){
+if (!empty($_GET['trilist'])) {
+    if (isset($_GET['trilist']) && $_GET['trilist'] == 'prix') {
         $query = $conn->prepare('SELECT * FROM manga ORDER BY price DESC');
         $query->execute();
     }
 
-    if(isset($_GET['trilist']) && $_GET['trilist'] == 'date'){
+    if (isset($_GET['trilist']) && $_GET['trilist'] == 'date') {
         $query = $conn->prepare('SELECT * FROM manga ORDER BY publish_date DESC');
         $query->execute();
     }
 
-    if(isset($_GET['trilist']) && $_GET['trilist'] == 'stock'){
+    if (isset($_GET['trilist']) && $_GET['trilist'] == 'stock') {
         $query = $conn->prepare('SELECT * FROM manga ORDER BY stock DESC');
         $query->execute();
     }
@@ -54,7 +54,7 @@ if(!empty($_GET['trilist'])){
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/product-list.css">
@@ -65,17 +65,17 @@ if(!empty($_GET['trilist'])){
     <?php include_once 'inc/header.php'; ?>
 
     <div class="px-4 py-5 my-5 text-center border rounded heroes">
-                <h1 class="text-white display-5 fw-bold">Mangas Disponibles</h1>
-            </div>
+        <h1 class="text-white display-5 fw-bold">Mangas Disponibles</h1>
+    </div>
 
     <main class="flex-shrink-0 container">
         <div>
-            
+
             <!--Afficher 4 mangas aléatoirement-->
             <div class="card-group mt-5 mb-5 ml-2 mr-2">
                 <?php foreach ($mes_mangas2 as $manga2) : ?>
                     <div class="card" style="margin: 0px 5px;">
-                        <img onclick = "window.location.href='product-details.php?id=<?= $manga2['id']; ?>'" style="cursor: pointer; width:100%; padding:0 5px; height:500px;" src="assets/cover/<?= $manga2['cover']; ?>" class="card-img-top" alt="...">
+                        <img onclick="window.location.href='product-details.php?id=<?= $manga2['id']; ?>'" style="cursor: pointer; width:100%; padding:0 5px; height:500px;" src="assets/cover/<?= $manga2['cover']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?= $manga2['title']; ?></h5>
                             <p class="card-text"><small class="text-muted"><?= $manga2['publish_date']; ?></small></p>
@@ -86,7 +86,7 @@ if(!empty($_GET['trilist'])){
                 <?php endforeach; ?>
             </div>
             <!--Liste mangas-->
-            
+
             <div style="width : 150px !important; margin-right : 0px;" class="mb-4 container">
                 <form method="get">
                     <select name="trilist" id="trilist">
@@ -120,7 +120,7 @@ if(!empty($_GET['trilist'])){
                     </div>
                 </div>
             <?php endforeach; ?>
-            
+
         </div>
     </main>
     <div class="px-4 py-5 my-5 border rounded banner"></div>
