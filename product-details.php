@@ -90,7 +90,7 @@ if (!empty($_POST)) {
                             <p class="card-text"><strong>Description : </strong><?= $manga['description']; ?></p>
                             <div class="d-flex">
                                 <h4><span id="background" class="me-4 badge">Stock : <span id="stock"><?= $manga['stock']; ?></span></span></h4>
-                                <h4><span class=" badge bg-danger"><?= $manga['price']; ?>€</span></h4>
+                                <h4><span class=" badge border text-danger"><?= $manga['price']; ?>€</span></h4>
                             </div>
                             <div class="d-flex">
                                 <?php
