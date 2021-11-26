@@ -38,7 +38,7 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && is_numeric($_POST['de
 
     <?php include 'inc/header.php'; ?>
 
-    <main class=" container flex-shrink-0">
+    <main class="container flex-shrink-0">
         <div class="container border rounded heroes my-5">
             <h1 class="text-center text-white p-5">Suppression d'un manga</h1>
         </div>

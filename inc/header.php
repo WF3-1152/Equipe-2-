@@ -11,7 +11,7 @@
             </li>
             <li class="ms-5 nav-item">
                 <a class="nav-link myNav_items" href="opinion-list.php">Les avis</a>
-            </li>
+            </li>            
             <?php
             if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
             ?>
@@ -21,6 +21,14 @@
                 <li class="ms-5 nav-item">
                     <a class="nav-link myNav_items" href="delete-product.php">Supprimer un produit</a>
                 </li>
+            <?php } ?>
+            <?php
+            if (isset($_SESSION['login'])) { ?>
+
+                <li class="ms-5 nav-item">
+                    <a class="nav-link myNav_items" href="cart.php">Mon panier</a>
+                </li>
+
             <?php } ?>
 
             <?php if (!isset($_SESSION['login'])) { ?>

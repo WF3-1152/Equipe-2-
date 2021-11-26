@@ -11,17 +11,30 @@ if (!isset($_SESSION['login'])) {
 
 
 
-
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
 
     $query = $conn->prepare('SELECT * FROM manga WHERE id = :id_param');
     $query->bindValue(':id_param', $_GET['id'], PDO::PARAM_INT);
     $query->execute();
-
     $manga = $query->fetch();
 }
 
 
+if (isset($_GET['quantity'])) {
+    $errors = [];
+
+    $safe = array_map('trim', array_map('strip_tags', $_GET));    
+    
+    if ($safe['quantity'] < 0 || $safe['quantity'] > $manga['stock']) {
+        $errors[] = 'Veuillez sélectionner une quantité valide.';
+    }
+
+    if (count($errors) === 0) {
+        // key => valeur        
+        $_SESSION['cart'][$manga['title']] = $safe['quantity'];
+        
+    }
+}
 
 if (!empty($_POST)) {
 
@@ -34,7 +47,7 @@ if (!empty($_POST)) {
         $errors[] = 'Votre commentaire doit comporter au moins 25 caractères';
     }
 
-    if ($safe['radio_mark'] != 1 && $safe['radio_mark'] != 2 && $safe['radio_mark'] != 3 && $safe['radio_mark'] != 4 && $safe['radio_mark'] != 5){
+    if ($safe['radio_mark'] != 1 && $safe['radio_mark'] != 2 && $safe['radio_mark'] != 3 && $safe['radio_mark'] != 4 && $safe['radio_mark'] != 5) {
         $errors[] = 'Note incorrecte';
     }
 
@@ -90,7 +103,7 @@ if (!empty($_POST)) {
     } ?>
 
     <main class="flex-shrink-0">
-        <h1>Détails Manga</h1>
+        <h1 class="heroes">Détails Manga</h1>
         <div class="container">
             <div class="card mb-3" style="max-width: 740px;">
                 <div class="row g-0">
@@ -115,15 +128,30 @@ if (!empty($_POST)) {
 
                                 <?php } ?>
 
+
                                 <a href="product-list.php" class="btn btn-warning">Retour à la liste</a>
 
                             </div>
+                            <div>
+                                <form method="GET">
+                                    <input type="hidden" name="id" value=<?=$_GET['id']?>>
+                                    <select class="mt-4 form-select" name="quantity">
+                                        <option selected disabled>-- Quantité -- </option>
+                                        <?php for ($i = 1; $i <= $manga['stock']; $i++) { // liste de 0 à stock
+                                            echo '<option value="' . $i . '">' . $i . '</option>';
+                                        }?>
+                                    </select>
+                                    <button type="submit" class="my-4 btn btn-success">Ajouter au panier</button>
+                                </form>
+
+                            </div>
+                            
 
                             <br>
                             <br>
                         </div>
                     </div>
-                    
+
 
                     <!-- Avis utilisateur -->
 
@@ -145,23 +173,23 @@ if (!empty($_POST)) {
                             <div class="mt-2 mb-4 d-flex justify-content-center">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio1" value="1">
-                                    <label class="form-check-label" for="inlineRadio1">1 <i style="color:orange;"class="fas fa-star"></i></label>
+                                    <label class="form-check-label" for="inlineRadio1">1 <i style="color:orange;" class="fas fa-star"></i></label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio2" value="2">
-                                    <label class="form-check-label" for="inlineRadio2">2<i style="color:orange;"class="fas fa-star"></i></label>
+                                    <label class="form-check-label" for="inlineRadio2">2<i style="color:orange;" class="fas fa-star"></i></label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio3" value="3">
-                                    <label class="form-check-label" for="inlineRadio3">3<i style="color:orange;"class="fas fa-star"></i></label>
+                                    <label class="form-check-label" for="inlineRadio3">3<i style="color:orange;" class="fas fa-star"></i></label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio4" value="4">
-                                    <label class="form-check-label" for="inlineRadio4">4<i style="color:orange;"class="fas fa-star"></i></label>
+                                    <label class="form-check-label" for="inlineRadio4">4<i style="color:orange;" class="fas fa-star"></i></label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="radio_mark" id="inlineRadio5" value="5">
-                                    <label class="form-check-label" for="inlineRadio5">5<i style="color:orange;"class="fas fa-star"></i></label>
+                                    <label class="form-check-label" for="inlineRadio5">5<i style="color:orange;" class="fas fa-star"></i></label>
                                 </div>
                             </div>
                             <div class="mb-3 d-flex justify-content-center">
