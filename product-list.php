@@ -90,10 +90,10 @@ if (!empty($_GET['trilist'])) {
             <div style="width : 150px !important; margin-right : 0px;" class="mb-4 container">
                 <form method="get">
                     <select name="trilist" id="trilist">
-                        <option value="0" selected disabled>--Tirer--</option>
-                        <option name="prix" value="prix">Prix</option>
-                        <option name="stock" value="stock">Stock</option>
-                        <option name="date" value="date">Date</option>
+                        <option value="0" selected disabled>--Trier--</option>
+                        <option name="prix" value="prix">Par prix</option>
+                        <option name="stock" value="stock">Par stock</option>
+                        <option name="date" value="date">Par date</option>
                     </select>
                     <input type="submit">
                 </form>
